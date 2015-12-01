@@ -7,8 +7,11 @@
 //
 
 #import "ViewController.h"
+#import "QRCodeViewController.h"
+#import "QROverlayView.h"
 
 @interface ViewController ()
+@property (nonatomic,strong) QRCodeViewController *readerVC;
 
 @end
 
@@ -17,6 +20,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+}
+- (IBAction)gotoScan:(id)sender {
+//    _readerVC = [[QRCodeViewController alloc] init];
+    _readerVC = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]instantiateViewControllerWithIdentifier:@"scanView"];
+    //QROverlayView *overlay = [[QROverlayView alloc]init];
+    [_readerVC returnQRcode:^(NSString *url) {
+        self.qrCode.text = url;
+    }];
+    [self.navigationController pushViewController:_readerVC animated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
