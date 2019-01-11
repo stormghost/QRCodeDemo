@@ -14,12 +14,12 @@ def parse_args():
                         help="Specify build method, xctool or xcodebuild.")
     parser.add_argument('--workspace', dest="workspace", default=None,
                         help="Build the workspace name.xcworkspace")
-    parser.add_argument("--scheme", dest="scheme", default=None,
+    parser.add_argument("--scheme", dest="scheme", default='QRCodeDemo',
                         help="Build the scheme specified by schemename. \
                         Required if building a workspace")
-    parser.add_argument("--project", dest="project", default=None,
+    parser.add_argument("--project", dest="project", default='QRCodeDemo',
                         help="Build the project name.xcodeproj")
-    parser.add_argument("--target", dest="target", default=None,
+    parser.add_argument("--target", dest="target", default='QRCodeDemo',
                         help="Build the target specified by targetname. \
                         Required if building a project")
     parser.add_argument("--sdk", dest="sdk", default='iphoneos',
@@ -31,7 +31,7 @@ def parse_args():
                         help="specify provisioning profile")
     parser.add_argument("--plist_path", dest="plist_path", default=None,
                         help="Specify build plist path")
-    parser.add_argument("--configuration", dest="configuration", default='Release',
+    parser.add_argument("--configuration", dest="configuration", default='Debug',
                         help="Specify build configuration, Release or Debug, \
                         default value is Release")
     parser.add_argument("--output_folder", dest="output_folder", default='BuildProducts',
